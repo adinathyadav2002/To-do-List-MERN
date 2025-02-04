@@ -1,6 +1,7 @@
 import "../index.css";
+import HeaderButtons from "./HeaderButtons";
 
-function Header() {
+function Header({ logged, userData }) {
   return (
     <header className="header">
       <nav className="nav">
@@ -27,12 +28,14 @@ function Header() {
             </a>
           </li>
           <li>
-            <a href="/" className="btn">
-              Log In
-            </a>
-            <a href="/" className="btn">
-              Sign In{" "}
-            </a>
+            {logged ? (
+              <HeaderButtons
+                firstText="LogOut"
+                secondText={`${userData.name.split(" ")[0]}`}
+              />
+            ) : (
+              <HeaderButtons firstText="LogIn" secondText="SignUp" />
+            )}
           </li>
         </ul>
       </nav>
