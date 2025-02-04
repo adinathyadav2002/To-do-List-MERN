@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: white;
+  --color-button: rgb(76, 76, 255);
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  /* background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255),
+    var(--color-primary)
+  ); */
+  color: #333;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.btn {
+  font-size: 1.8rem;
+  height: 4rem;
+  /* width: 9.6rem; */
+  border: 2px solid white;
+  padding: 0.4rem 1.6rem;
+  border-radius: 1.5rem;
+}
+
+/*************************************/
+/* Header  */
+/*************************************/
+
+.header {
+  height: 6.2rem;
+  width: 100%;
+  background-color: rgb(76, 76, 255);
+  font-size: 2em;
+  margin-bottom: 3rem;
+}
+
+nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 10px 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.nav__list li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+}
+
+li:first-child {
+  word-spacing: -0.4rem;
+  letter-spacing: -0.4rem;
+}
+
+li:last-child {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  word-spacing: -0.4rem;
+}
+
+.header__icon {
+  height: 24px;
+  width: 24px;
+}
+
+/* UTILITY CSS */
+.header__icon {
+  width: 24px;
+  height: 24px;
+}
