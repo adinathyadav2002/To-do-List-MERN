@@ -23,6 +23,8 @@ function App() {
     <>
       <Header logged={logged} userData={userData} />
       <main className="main">
+        {/* div to manage responsiveness of Tasks Component  */}
+        <div className="main__div"></div>
         <Aside />
         <Tasks />
       </main>

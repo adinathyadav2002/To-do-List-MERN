@@ -17,6 +17,14 @@ function Tasks({ tasksList }) {
         <Task />
         <Task />
         <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
       </footer>
     </div>
   );
