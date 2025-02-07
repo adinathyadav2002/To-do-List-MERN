@@ -1,10 +1,10 @@
 import AddTask from "./AddTask";
 import Stats from "./Stats";
 
-function Aside() {
+function Aside({ handleUserdata }) {
   return (
     <div className="aside">
-      <AddTask />
+      <AddTask handleUserdata={handleUserdata} />
       <Stats />
     </div>
   );

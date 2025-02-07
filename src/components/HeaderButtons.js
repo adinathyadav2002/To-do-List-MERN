@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 function HeaderButtons({ firstText, secondText }) {
   return (
     <>
-      <a href="/" className="btn">
+      <Link to={`/${firstText}`} className="btn">
         {firstText}
-      </a>
-      <a href="/" className="btn">
+      </Link>
+      <Link to={`/${secondText}`} className="btn">
         {secondText}
-      </a>
+      </Link>
     </>
   );
 }

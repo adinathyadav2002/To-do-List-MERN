@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Task({ task }) {
+  const [isCompleted, setIsCompleted] = useState("");
+
   return (
     <div className="task">
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={isCompleted}
+        onChange={(e) => setIsCompleted(e.target.checked)}
+      />
       <span className="checkmark"></span>
       <p>{task?.title}</p>
       <div className="task__buttons">

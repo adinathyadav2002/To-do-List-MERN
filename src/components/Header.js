@@ -1,13 +1,24 @@
+import { Link } from "react-router-dom";
 import "../index.css";
 import HeaderButtons from "./HeaderButtons";
 
-function Header({ logged, userData }) {
+function Header({ userdata }) {
+  function isEmpty(obj) {
+    for (const prop in obj) {
+      if (Object.hasOwn(obj, prop)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   return (
     <header className="header">
       <nav className="nav">
         <ul className="nav__list">
           <li>
-            <a href="/" id="todolist">
+            <Link to="/" id="todolist">
               {" "}
               <img
                 src="/img/note.svg"
@@ -15,7 +26,7 @@ function Header({ logged, userData }) {
                 className="header__icon"
               />
               <span>To-do List</span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="https://github.com/adinathyadav2002/todolist">
@@ -28,10 +39,10 @@ function Header({ logged, userData }) {
             </a>
           </li>
           <li>
-            {logged ? (
+            {!isEmpty(userdata) ? (
               <HeaderButtons
                 firstText="LogOut"
-                secondText={`${userData.name.split(" ")[0]}`}
+                secondText={`${userdata.name?.split(" ")[0]}`}
               />
             ) : (
               <HeaderButtons firstText="LogIn" secondText="SignUp" />
