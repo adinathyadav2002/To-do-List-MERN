@@ -1,13 +1,13 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Login from "./components/Login";
+import Signup from "./components/Signup";
 
-function LoginPage({ userdata, handleUserdata }) {
+function SignupPage({ handleUserdata, userdata }) {
   return (
     <>
       <Header userdata={userdata} />
       <main className="main">
-        <Login handleUserdata={handleUserdata} userdata={userdata} />
+        <Signup handleUserdata={handleUserdata} />
       </main>
       <footer>
         <Footer />
@@ -16,4 +16,4 @@ function LoginPage({ userdata, handleUserdata }) {
   );
 }
 
-export default LoginPage;
+export default SignupPage;

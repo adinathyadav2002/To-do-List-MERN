@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import { useEffect, useState } from "react";
 import Tasks from "./components/Tasks";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
