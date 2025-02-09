@@ -5,6 +5,7 @@ import LoginPage from "./LoginPage";
 import Logout from "./components/Logout";
 import SignupPage from "./SignupPage";
 import ForgotPasword from "./components/ForgotPasword";
+import AccountPage from "./AccountPage";
 
 export default function App() {
   const [userdata, setUserdata] = useState({});
@@ -38,6 +39,12 @@ export default function App() {
           path="/forgotPassword"
           element={
             <ForgotPasword handleUserdata={setUserdata} userdata={userdata} />
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <AccountPage handleUserdata={setUserdata} userdata={userdata} />
           }
         />
       </Routes>

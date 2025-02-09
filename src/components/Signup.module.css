@@ -1,0 +1,94 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 5rem;
+  width: 100%;
+  overflow: auto;
+  padding-top: 5rem;
+}
+
+.modal form {
+  background-color: #fefefe;
+  margin: 2% auto 15% auto;
+  border: 1px solid #888;
+  width: 65%;
+}
+
+.modal label {
+  font-size: 1.4rem;
+}
+
+.modal input[type="text"],
+.modal input[type="password"] {
+  font-size: 1.4rem;
+  width: 100%;
+  padding: 1.2rem 1rem;
+  margin: 0.5rem 0 2.2rem 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.modal input[type="text"]:focus,
+.modal input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for all buttons */
+.modal button {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 1.4rem 2rem;
+  margin: 0.8rem 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.modal button:hover {
+  opacity: 1;
+}
+
+.modal .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.modal .container {
+  padding: 1.6rem;
+}
+
+.modal .container h1 {
+  margin-bottom: 0.4rem;
+}
+
+.modal hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 2.5rem;
+}
+
+.modal .submitButtons {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+
+.modal .submitButtons button {
+  /* margin-left: auto; */
+  width: 10%;
+}
+.modal .submitButtons::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .loginbtn,
+  .signupbtn {
+    width: 100%;
+  }
+}

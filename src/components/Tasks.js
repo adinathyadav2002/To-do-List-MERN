@@ -1,16 +1,17 @@
 import { useState } from "react";
 import "../index.css";
 import Task from "./Task";
+import styles from "./Tasks.module.css";
 
 function Tasks({ tasksList }) {
   const [sortby, setSortby] = useState("time");
 
   return (
-    <div className="tasks">
-      <header className="tasks__header">
+    <div className={styles.tasks}>
+      <header>
         <ul>
           <li>Tasks</li>
-          <li className="sortby">
+          <li className={styles.sortby}>
             <label htmlFor="sortby">Sort By</label>
             <select
               id="sortby"
@@ -25,8 +26,8 @@ function Tasks({ tasksList }) {
           </li>
         </ul>
       </header>
-      {/* tasks__footer-empty class for empty list */}
-      <footer className="tasks__footer">
+      {/* footer-empty class for empty list */}
+      <footer>
         {tasksList?.map((task) => {
           return <Task task={task} key={task.title} />;
         })}

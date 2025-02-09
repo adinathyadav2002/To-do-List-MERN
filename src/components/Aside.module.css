@@ -1,0 +1,16 @@
+.aside {
+  width: 28rem;
+  height: 80vh;
+  padding: 1rem 1rem;
+  border: 2px solid #888;
+  opacity: 1;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  left: 3rem;
+  top: 9.1rem;
+  z-index: 1;
+}

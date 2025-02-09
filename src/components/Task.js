@@ -1,19 +1,23 @@
 import React, { useState } from "react";
+import styles from "./Task.module.css";
 
 export default function Task({ task }) {
-  const [isCompleted, setIsCompleted] = useState("");
+  const [isCompleted, setIsCompleted] = useState(false);
   const [priority, setPriority] = useState(task.priority);
 
   return (
-    <div className="task">
+    <div className={styles.task}>
       <input
         type="checkbox"
-        checked={task.status === "completed" ? "checked" : ""}
-        onChange={(e) => setIsCompleted(e.target.checked)}
+        checked={isCompleted}
+        onChange={(e) => {
+          console.log(e);
+          setIsCompleted(e.target.checked);
+        }}
       />
-      <span className="checkmark"></span>
+      <span className={styles.checkmark}></span>
       <p>{task?.title}</p>
-      <div className="task__buttons">
+      <div className={styles.buttonsDiv}>
         <p>{task.dueDate.split("T")[0]}</p>
         <label htmlFor="priority">
           <select
@@ -28,11 +32,11 @@ export default function Task({ task }) {
           </select>
         </label>
         <button type="button">
-          <img src="img/note.png" className="icon" alt="edit task" />
+          <img src="img/note.png" alt="edit task" />
         </button>
 
         <button type="button">
-          <img src="img/trash_black.png" className="icon" alt="delete task" />
+          <img src="img/trash_black.png" alt="delete task" />
         </button>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import styles from "./AddTask.module.css";
 
 export default function AddTask({ handleUserdata }) {
   const [title, setTitle] = useState("");
@@ -36,8 +37,8 @@ export default function AddTask({ handleUserdata }) {
   };
 
   return (
-    <div className="addTask">
-      <form className="addTask__form">
+    <div className={styles.addTask}>
+      <form>
         <h1>
           <label htmlFor="task">Add Task </label>
         </h1>

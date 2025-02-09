@@ -1,0 +1,52 @@
+.header {
+  height: 6.2rem;
+  width: 100%;
+  background-color: var(--color-secondary);
+  font-size: 2em;
+  margin-bottom: 3rem;
+}
+
+.header nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header ul {
+  list-style: none;
+  padding: 0;
+  padding: 1rem 3rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+.header li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.header nav li:first-child {
+  word-spacing: -0.4rem;
+  letter-spacing: -0.4rem;
+}
+
+.header li:last-child {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  word-spacing: -0.4rem;
+}
+
+.header img {
+  height: 24px;
+  width: 24px;
+}

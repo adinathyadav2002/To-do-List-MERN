@@ -1,0 +1,15 @@
+.main {
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+
+/* div to manage responsiveness of Tasks Component */
+.mainDiv {
+  width: 28rem;
+  height: 50rem;
+  padding: 1rem 2rem;
+  border: 2px solid #fff;
+}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import styles from "./Signup.module.css";
+
 export default function Signup({ handleUserdata }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -34,9 +36,9 @@ export default function Signup({ handleUserdata }) {
 
   return (
     <>
-      <div className="modal">
-        <form className="modal-content" onSubmit={handleSubmit}>
-          <div className="container">
+      <div className={styles.modal}>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.container}>
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
             <hr />
@@ -89,11 +91,11 @@ export default function Signup({ handleUserdata }) {
               required
             />
 
-            <div className="clearfix">
-              <button type="button" className="loginbtn">
+            <div className={styles.submitButtons}>
+              <button type="button" className={styles.loginbtn}>
                 Login
               </button>
-              <button type="submit" className="signup">
+              <button type="button" className={styles.signupbtn}>
                 Sign Up
               </button>
             </div>

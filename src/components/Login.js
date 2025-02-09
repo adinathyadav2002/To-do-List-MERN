@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
 
 export default function Login({ userdata, handleUserdata }) {
   const [email, setEmail] = useState("");
@@ -38,13 +39,13 @@ export default function Login({ userdata, handleUserdata }) {
   };
 
   return (
-    <div className="login__div">
-      <form className="login__form">
-        <div className="imgcontainer">
-          <img src="img/user.svg" alt="user" className="user" />
+    <div className={styles.login}>
+      <form>
+        <div className={styles.imgContainer}>
+          <img src="img/user.svg" alt="user" />
         </div>
 
-        <div className="container">
+        <div className={styles.container}>
           <label htmlFor="uname">
             <b>Username</b>
           </label>
@@ -80,8 +81,8 @@ export default function Login({ userdata, handleUserdata }) {
           </button>
         </div>
 
-        <div className="container">
-          <span className="psw">
+        <div className={styles.container}>
+          <span>
             Forgot <a href="/">password?</a>
           </span>
         </div>
