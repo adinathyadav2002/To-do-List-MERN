@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../UserContext";
 
-export default function Logout({ handleUserdata }) {
+export default function Logout() {
+  const { handleUserData } = useUserContext();
   const navigate = useNavigate();
   useEffect(
     function () {
@@ -11,11 +13,11 @@ export default function Logout({ handleUserdata }) {
           withCredentials: true,
         });
       }
-      handleUserdata((x) => {});
+      handleUserData((x) => {});
       logOutUser();
       navigate("/login");
     },
-    [navigate, handleUserdata]
+    [navigate, handleUserData]
   );
   return <div></div>;
 }

@@ -2,10 +2,10 @@ import AddTask from "./AddTask";
 import Stats from "./Stats";
 import styles from "./Aside.module.css";
 
-function Aside({ handleUserdata }) {
+function Aside() {
   return (
     <div className={styles.aside}>
-      <AddTask handleUserdata={handleUserdata} />
+      <AddTask />
       <Stats />
     </div>
   );

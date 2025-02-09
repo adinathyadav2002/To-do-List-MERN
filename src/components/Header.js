@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import "../index.css";
 import HeaderButtons from "./HeaderButtons";
 import styles from "./Header.module.css";
+import { useUserContext } from "../UserContext";
 
-function Header({ userdata }) {
+function Header() {
+  const { userdata } = useUserContext();
   function isEmpty(obj) {
     for (const prop in obj) {
       if (Object.hasOwn(obj, prop)) {

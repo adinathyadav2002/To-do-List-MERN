@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import styles from "./AddTask.module.css";
+import { useUserContext } from "../UserContext";
 
-export default function AddTask({ handleUserdata }) {
+export default function AddTask() {
+  const { handleUserData } = useUserContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPiority] = useState("low");
   const [dueDate, setDueDate] = useState(
     `${new Date().toISOString().split("T")[0]}`
   );
-  const navigate = useNavigate();
 
   const handleAddTask = async () => {
     try {
-      console.log("😍😍😍😍");
       const response = await axios.post(
         "http://127.0.0.1:2000/api/v1/users",
         {
@@ -29,8 +28,7 @@ export default function AddTask({ handleUserdata }) {
         }
       );
 
-      handleUserdata((x) => response.data.data.user);
-      navigate("/");
+      handleUserData((x) => response.data.data.user);
     } catch (error) {
       console.error("Error updating data:", error);
     }

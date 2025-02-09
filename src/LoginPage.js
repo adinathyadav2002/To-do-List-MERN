@@ -2,12 +2,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 
-function LoginPage({ userdata, handleUserdata }) {
+function LoginPage() {
   return (
     <>
-      <Header userdata={userdata} />
+      <Header />
       <main className="main">
-        <Login handleUserdata={handleUserdata} userdata={userdata} />
+        <Login />
       </main>
       <footer>
         <Footer />

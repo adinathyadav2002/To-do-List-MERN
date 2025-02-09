@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
+import { useUserContext } from "../UserContext";
 
-export default function Login({ userdata, handleUserdata }) {
+export default function Login() {
+  const { handleUserData } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export default function Login({ userdata, handleUserdata }) {
         }
       );
 
-      handleUserdata((x) => response.data.data.user);
+      handleUserData((x) => response.data.data.user);
       console.log(response.data.data.user);
       navigate("/");
     } catch (error) {

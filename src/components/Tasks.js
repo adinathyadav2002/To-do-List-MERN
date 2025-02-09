@@ -2,9 +2,11 @@ import { useState } from "react";
 import "../index.css";
 import Task from "./Task";
 import styles from "./Tasks.module.css";
+import { useUserContext } from "../UserContext";
 
-function Tasks({ tasksList }) {
+function Tasks() {
   const [sortby, setSortby] = useState("time");
+  const { userdata } = useUserContext();
 
   return (
     <div className={styles.tasks}>
@@ -28,7 +30,7 @@ function Tasks({ tasksList }) {
       </header>
       {/* footer-empty class for empty list */}
       <footer>
-        {tasksList?.map((task) => {
+        {userdata.tasks?.map((task) => {
           return <Task task={task} key={task.title} />;
         })}
       </footer>
