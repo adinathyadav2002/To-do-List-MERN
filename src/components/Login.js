@@ -3,9 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useUserContext } from "../UserContext";
+import { useTasksContext } from "../TasksContext";
 
 export default function Login() {
-  const { handleUserData } = useUserContext();
+  const { userdata, handleUserData } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -19,6 +20,12 @@ export default function Login() {
   };
 
   const handleUserLogin = async () => {
+    if (!email || !password) {
+      alert("Please enter email or password!");
+      return;
+    }
+
+    // post req to login
     try {
       const response = await axios.post(
         "http://127.0.0.1:2000/api/v1/users/login",
@@ -33,10 +40,9 @@ export default function Login() {
       );
 
       handleUserData((x) => response.data.data.user);
-      console.log(response.data.data.user);
-      navigate("/");
+      navigate("/app");
     } catch (error) {
-      console.error("Error updating data:", error);
+      alert(error.response.data.message);
     }
   };
 
@@ -73,7 +79,7 @@ export default function Login() {
           />
 
           <button
-            type="submit"
+            type="button"
             onClick={(e) => {
               e.preventDefault();
               handleUserLogin();

@@ -1,12 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../index.css";
 import Task from "./Task";
 import styles from "./Tasks.module.css";
-import { useUserContext } from "../UserContext";
+import { useTasksContext } from "../TasksContext";
+import axios from "axios";
 
 function Tasks() {
   const [sortby, setSortby] = useState("time");
-  const { userdata } = useUserContext();
+  const { handleTasksData, tasks } = useTasksContext();
+
+  useEffect(
+    function () {
+      async function fetchTasks() {
+        try {
+          // get req to fetch tasks
+          const response = await axios.get(
+            "http://127.0.0.1:2000/api/v1/users/tasks",
+            {
+              withCredentials: true,
+            }
+          );
+
+          handleTasksData((x) => [...response.data.data.tasks]);
+        } catch (error) {
+          alert(error.response.data.message);
+        }
+      }
+      fetchTasks();
+    },
+    [handleTasksData]
+  );
 
   return (
     <div className={styles.tasks}>
@@ -28,9 +51,9 @@ function Tasks() {
           </li>
         </ul>
       </header>
-      {/* footer-empty class for empty list */}
-      <footer>
-        {userdata.tasks?.map((task) => {
+
+      <footer className={`${tasks?.length ? "" : styles.footer_empty}`}>
+        {tasks?.map((task) => {
           return <Task task={task} key={task.title} />;
         })}
       </footer>

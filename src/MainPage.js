@@ -1,8 +1,8 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
-import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import styles from "./MainPage.module.css";
+import { Outlet } from "react-router-dom";
 
 function MainPage() {
   return (
@@ -11,7 +11,7 @@ function MainPage() {
       <main className={styles.main}>
         {/* div to manage responsiveness of Tasks Component  */}
         <div className={styles.mainDiv}></div>
-        <Aside />
+        <Outlet />
         <Tasks />
       </main>
       <footer>

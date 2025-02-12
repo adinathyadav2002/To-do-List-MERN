@@ -21,7 +21,7 @@ function Header() {
       <nav>
         <ul>
           <li>
-            <Link to={isEmpty(userdata) ? "/signup" : "/"} id="todolist">
+            <Link to="/" id="todolist">
               {" "}
               <img src="/img/note.svg" alt="To-do List" />
               <span>To-do List</span>

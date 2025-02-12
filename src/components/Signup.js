@@ -28,7 +28,7 @@ export default function Signup({ handleUserdata }) {
 
       handleUserdata((x) => response.data.data.user);
       console.log(response.data.data.user);
-      navigate("/");
+      navigate("/app");
     } catch (err) {
       console.error(err.message);
     }
@@ -95,7 +95,7 @@ export default function Signup({ handleUserdata }) {
               <button type="button" className={styles.loginbtn}>
                 Login
               </button>
-              <button type="button" className={styles.signupbtn}>
+              <button type="submit" className={styles.signupbtn}>
                 Sign Up
               </button>
             </div>
