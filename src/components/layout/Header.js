@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import "../index.css";
 import HeaderButtons from "./HeaderButtons";
-import styles from "./Header.module.css";
-import { useUserContext } from "../UserContext";
+import styles from "../../styles/Header.module.css";
+import { useUserContext } from "../../context/UserContext";
 
 function Header() {
   const { userdata } = useUserContext();

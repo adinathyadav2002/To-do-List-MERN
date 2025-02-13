@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "./AddTask.module.css";
-import { useTasksContext } from "../TasksContext";
-import { useUserContext } from "../UserContext";
-import { useParams } from "react-router-dom";
+import styles from "../../styles/AddTask.module.css";
+import { useTasksContext } from "../../context/TasksContext";
+import { useUserContext } from "../../context/UserContext";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AddTask() {
+  const params = useParams();
+  const navigate = useNavigate();
+
   const { tasks, handleTasksData } = useTasksContext();
   const { userdata } = useUserContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPiority] = useState("low");
-  const [btnState, setBtnState] = useState("Add");
+  const [btnState, setBtnState] = useState(function () {
+    if (params.id) return "Edit";
+    return "Add";
+  });
   const [dueDate, setDueDate] = useState(
     `${new Date().toISOString().split("T")[0]}`
   );
-  const params = useParams();
+
+  const resetFormStates = () => {
+    setTitle("");
+    setDescription("");
+    setDueDate((x) => new Date(Date.now()).toISOString().split("T")[0]);
+    setPiority(() => "low");
+    setBtnState(function () {
+      if (params.id) return "Edit";
+      return "Add";
+    });
+  };
 
   useEffect(
     function () {
@@ -27,17 +43,45 @@ export default function AddTask() {
         });
 
         if (!currentTask) return;
-        console.log(currentTask);
 
         setTitle(currentTask?.title);
         setDescription(currentTask?.description);
-        setDueDate((x) => "2025-12-09");
+        setDueDate((x) => currentTask.dueDate.split("T")[0]);
         setPiority(currentTask?.priority);
-        setBtnState("Edit");
+        setBtnState((x) => "Edit");
       }
     },
-    [title, description, dueDate, priority, params.id, btnState, tasks]
+    [params.id, tasks]
   );
+
+  const handleEditTask = async () => {
+    try {
+      const response = await axios.patch(
+        `http://127.0.0.1:2000/api/v1/users/tasks/${params.id}`,
+        {
+          title,
+          description,
+          priority,
+          dueDate,
+        },
+        { withCredentials: true }
+      );
+
+      handleTasksData((x) => {
+        const newTasks = x.map((task) => {
+          if (task._id === params.id) {
+            return response.data.data.task;
+          }
+          return task;
+        });
+        return newTasks;
+      });
+      resetFormStates();
+      navigate("/app");
+    } catch (err) {
+      alert(err.response.data.message);
+    }
+  };
 
   const handleAddTask = async () => {
     try {
@@ -56,15 +100,32 @@ export default function AddTask() {
       );
 
       handleTasksData((x) => [...x, response.data.data.task]);
+      resetFormStates();
     } catch (error) {
       console.error("Error updating data:", error);
     }
+  };
+
+  const closeEditForm = () => {
+    navigate("/app");
   };
 
   return (
     <div className={styles.addTask}>
       <form>
         <h1>
+          {btnState === "Edit" ? (
+            <button
+              type="button"
+              className={styles.closeBtn}
+              onClick={closeEditForm}
+            >
+              {" "}
+              ✖️
+            </button>
+          ) : (
+            ""
+          )}
           <label htmlFor="task">{params.id ? "Edit Task" : "Add task"}</label>
         </h1>
 
@@ -111,12 +172,14 @@ export default function AddTask() {
         </label>
 
         <input
-          type="submit"
+          type="button"
           value={btnState}
           onClick={(e) => {
             e.preventDefault();
-            handleAddTask();
+            if (btnState === "Add") handleAddTask();
+            else handleEditTask();
           }}
+          onChange={(e) => setBtnState(e.target.value)}
         />
       </form>
     </div>

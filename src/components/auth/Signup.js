@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import styles from "./Signup.module.css";
+import styles from "../../styles/Signup.module.css";
+import { useUserContext } from "../../context/UserContext";
 
-export default function Signup({ handleUserdata }) {
+export default function Signup() {
+  const { handleUserData } = useUserContext();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,6 @@ export default function Signup({ handleUserdata }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(
         "http://127.0.0.1:2000/api/v1/users/signup",
@@ -26,11 +27,13 @@ export default function Signup({ handleUserdata }) {
         { withCredentials: true }
       );
 
-      handleUserdata((x) => response.data.data.user);
+      if (response.data.status === "success") alert("Account Created!");
+
+      handleUserData((x) => response.data.data.user);
       console.log(response.data.data.user);
       navigate("/app");
     } catch (err) {
-      console.error(err.message);
+      alert(err.response.data.error.message);
     }
   };
 

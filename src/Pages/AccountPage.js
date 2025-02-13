@@ -1,7 +1,6 @@
 import React from "react";
-import Header from "./components/Header";
-import Login from "./components/Login";
-import Account from "./components/Account";
+import Header from "../components/layout/Header";
+import Account from "../components/Account";
 
 export default function AccountPage({ userdata, handleUserdata }) {
   return (

@@ -1,6 +1,6 @@
 import AddTask from "./AddTask";
 import Stats from "./Stats";
-import styles from "./Aside.module.css";
+import styles from "../../styles/Aside.module.css";
 
 function Aside() {
   return (

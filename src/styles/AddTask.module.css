@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
+  /* background-color: red; */
 }
 
 .addTask h1 {
@@ -15,6 +16,13 @@
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #888;
+}
+
+.addTask .closeBtn {
+  position: absolute;
+  top: 2%;
+  right: 10%;
+  cursor: pointer;
 }
 
 /* direct-child combinator selector*/
@@ -58,7 +66,7 @@
   padding: 0.4rem 0.4rem;
 }
 
-.addTask input[type="submit"] {
+.addTask input[type="button"] {
   margin-top: 1.6rem;
   cursor: pointer;
   height: 3.6rem;

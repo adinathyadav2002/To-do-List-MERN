@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import "../index.css";
 import Task from "./Task";
 import styles from "./Tasks.module.css";
-import { useTasksContext } from "../TasksContext";
+import { useTasksContext } from "../../context/TasksContext";
 import axios from "axios";
 
 function Tasks() {

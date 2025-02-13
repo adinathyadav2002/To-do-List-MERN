@@ -11,7 +11,7 @@
 .task {
   /* top right bottom left */
   padding: 0.8rem 3rem 0.8rem 4rem;
-  margin: 1rem;
+  margin: 1rem 0rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -25,12 +25,6 @@
   font-size: 1.6rem;
   line-height: 1.8;
   height: 4.4rem;
-}
-
-.buttonsDiv {
-  margin-left: auto;
-  display: flex;
-  gap: 0.8rem;
 }
 
 .task div button {
@@ -96,4 +90,27 @@
   border: 10px solid var(--color-secondary);
   border-width: 0 3.2px 3.2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.task .buttonsDiv {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.task div p:nth-child(1) {
+  width: 9rem;
+  height: 100%;
+}
+
+.task div p:nth-child(2) {
+  width: 7rem;
+  height: 100%;
+}
+
+.task .btn {
+  cursor: pointer;
+}
+
+.task .btn:hover {
+  background-color: #ccc;
 }

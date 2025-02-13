@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import styles from "./Login.module.css";
-import { useUserContext } from "../UserContext";
-import { useTasksContext } from "../TasksContext";
+import styles from "../../styles/Login.module.css";
+import { useUserContext } from "../../context/UserContext";
 
 export default function Login() {
-  const { userdata, handleUserData } = useUserContext();
+  const { handleUserData } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
